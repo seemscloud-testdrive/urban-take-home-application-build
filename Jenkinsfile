@@ -2,10 +2,7 @@ def dockerBuild() {
     tags = dockerTags()
     
     tags.each { item ->
-        sh """
-            cd application
-            docker build . -t ${item}
-        """
+        sh "cd application && docker build . -t ${item}"
     }
 }
 
@@ -14,9 +11,7 @@ def dockerPush(creds) {
     tags = dockerTags()
     
     tags.each { item ->
-        sh """
-            docker push ${item}
-        """
+        sh "docker push ${item}"
     }
 }
 
